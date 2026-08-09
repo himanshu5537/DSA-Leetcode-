@@ -5,9 +5,7 @@ class Solution {
             return;
         }
         if(target==0){
-            if(!list.contains(new ArrayList<>(ld))){
             list.add(new ArrayList<>(ld));
-            }
             return;
 
      }
