@@ -7,15 +7,15 @@ class Solution {
           }
           return true;
     }
-    public static void checkfunction(String s, List<List<String>>ans, List<String> path,int index){
-        if (index==s.length()){
+    public static void checkfunction(String s, List<List<String>>ans, List<String> path){
+        if (s.length()==0){
             ans.add(new ArrayList<>(path));
             return;
         }
-        for(int i=index;i<s.length();i++){
-            if(isPalindrome(s,index,i)){
-                path.add(s.substring(index,i+1));
-                checkfunction(s,ans,path,i+1);
+        for(int i=0;i<s.length();i++){
+            if(isPalindrome(s,0,i)){
+                path.add(s.substring(0,i+1));
+                checkfunction(s.substring(i+1),ans,path);
                 path.remove(path.size()-1);
             }
         }
@@ -23,7 +23,7 @@ class Solution {
     public List<List<String>> partition(String s) {
         List<List<String>>ans=new ArrayList<>();
         List<String> path=new ArrayList<>();
-        checkfunction(s,ans,path,0);
+        checkfunction(s,ans,path);
         return ans;
     }
 }
