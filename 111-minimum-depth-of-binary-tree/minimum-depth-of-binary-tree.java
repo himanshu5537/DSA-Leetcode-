@@ -14,34 +14,23 @@
  * }
  */
 class Solution {
-    public int min_height(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-
-        // Leaf node
-        if (root.left == null && root.right == null) {
-            return 1;
-        }
-
-        // Only right child exists
-        if (root.left == null) {
-            return 1 + min_height(root.right);
-        }
-
-        // Only left child exists
-        if (root.right == null) {
-            return 1 + min_height(root.left);
-        }
-
-        // Both children exist
-        return 1 + Math.min(
-            min_height(root.left),
-            min_height(root.right)
-        );
-    }
-
     public int minDepth(TreeNode root) {
-        return min_height(root);
+       if(root==null) return 0;
+       int count=0;
+       Queue<TreeNode> q=new LinkedList<>();
+       q.offer(root);
+       while(!q.isEmpty()){
+        int size=q.size();
+        count++;
+        for(int i=0;i<size;i++){
+            TreeNode temp=q.poll();
+            if(temp.left==null && temp.right==null){
+                return count;
+            }
+            if(temp.left!=null) q.offer(temp.left);
+            if(temp.right!=null) q.offer(temp.right);
+        }
+       }
+       return 0;
     }
 }
