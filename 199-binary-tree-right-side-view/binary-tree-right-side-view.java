@@ -21,11 +21,14 @@ class Solution {
         q.offer(root);
         while(!q.isEmpty()){
             int size=q.size();
-            for(int i=0;i<size;i++){
+            while(size>0){
                 TreeNode temp=q.poll();
-                if(i==size-1) list.add(temp.val);
                 if(temp.left!=null) q.offer(temp.left);
                 if(temp.right!=null) q.offer(temp.right);
+                size--;
+                if(size==0) {
+                    list.add(temp.val);
+                }
             }
         }
         return list;
