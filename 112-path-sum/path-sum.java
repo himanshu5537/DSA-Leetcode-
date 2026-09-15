@@ -29,7 +29,6 @@ class Solution {
     public boolean hasPathSum(TreeNode root, int targetSum) {
         if(root==null) return false;
         int target=targetSum-root.val;
-        if(checkSum(root,target)==true) return true;
-        return false;
+        return checkSum(root,target);
     }
 }
