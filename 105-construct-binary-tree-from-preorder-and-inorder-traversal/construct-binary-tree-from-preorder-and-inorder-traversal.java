@@ -23,10 +23,9 @@ class Solution {
     }
     public TreeNode build(int start,int end,int[] preorder, int[] inorder){
             if(start>end || end<start ) return null;
-            int rootvalue=preorder[idx];
+            int rootvalue=preorder[idx++];
             TreeNode root=new TreeNode(rootvalue);
             int i=search(inorder,rootvalue);
-            idx++;
             root.left=build(start,i-1,preorder,inorder);
             root.right=build(i+1,end,preorder,inorder);
             return root;
